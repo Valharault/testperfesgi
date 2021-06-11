@@ -8,13 +8,12 @@ class Actors extends Component {
     }
 
     componentDidMount() {
-        this.getUsers();
+        this.getActors();
     }
 
-    getUsers() {
-        axios.get(`http://localhost:8000/api/actor`).then(actors => {
-            console.log(actors)
-            this.setState({actors: actors.data, loading: false})
+    getActors() {
+        axios.get(`http://localhost:8000/api/actors`).then(actors => {
+            this.setState({actors: actors.data.['hydra:member'], loading: false})
         })
     }
 
@@ -34,18 +33,14 @@ class Actors extends Component {
                             </div>
                         ) : (
                             <div className={'row'}>
-                                {this.state.actors.map(user =>
-                                    <div className="col-md-10 offset-md-1 row-block" key={user.id}>
+                                {this.state.actors.map(actor =>
+                                    <div className="col-md-10 offset-md-1 row-block" key={actor.id}>
                                         <ul id="sortable">
                                             <li>
                                                 <div className="media">
-                                                    <div className="media-left align-self-center">
-                                                        <img className="rounded-circle"
-                                                             src={user.imageURL}/>
-                                                    </div>
                                                     <div className="media-body">
-                                                        <h4>{user.name}</h4>
-                                                        <p>{user.description}</p>
+                                                        <h4>{actor.fullName}</h4>
+                                                        <p>{actor.notes}</p>
                                                     </div>
                                                     <div className="media-right align-self-center">
                                                         <a href="#" className="btn btn-default">Contact Now</a>
