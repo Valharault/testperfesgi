@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=ActorRepository::class)
  */
-#[ApiResource()]
+#[ApiResource(attributes: ['pagination_items_per_page' => 1000])]
 class Actor
 {
     /**

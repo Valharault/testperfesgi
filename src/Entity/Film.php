@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Repository\FilmRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -11,7 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=FilmRepository::class)
  */
-#[ApiResource()]
+#[ApiResource(attributes: ['pagination_items_per_page' => 10])]
+#[ApiFilter(SearchFilter::class, properties: ['id' => 'exact', 'title' => 'exact', 'story' => 'partial'])]
 class Film
 {
     /**

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Route, Switch, Redirect, Link, withRouter} from 'react-router-dom';
 import Actors from './Actors';
 import Posts from './Posts';
+import Films from './Films';
 
 class Home extends Component {
 
@@ -9,15 +10,18 @@ class Home extends Component {
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                    <Link className={"navbar-brand"} to={"/"}> Symfony React Project </Link>
+                    <Link className={"navbar-brand"} to={"/"}> ALLOCINÉ </Link>
                     <div className="collapse navbar-collapse" id="navbarText">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item">
-                                <Link className={"nav-link"} to={"/films"}> Films </Link>
+                                <Link className={"nav-link"} to={"/actors"}> Acteurs </Link>
                             </li>
 
                             <li className="nav-item">
-                                <Link className={"nav-link"} to={"/posts"}> Posts </Link>
+                                <Link className={"nav-link"} to={"/posts"}> Actus </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className={"nav-link"} to={"/films"}> Top 10 films </Link>
                             </li>
                         </ul>
                     </div>
@@ -26,6 +30,7 @@ class Home extends Component {
                     <Redirect exact from="/" to="/actors"/>
                     <Route path="/actors" component={Actors}/>
                     <Route path="/posts" component={Posts}/>
+                    <Route path="/films" component={Films}/>
                 </Switch>
             </div>
         )

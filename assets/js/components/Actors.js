@@ -24,8 +24,7 @@ class Actors extends Component {
                 <section className="row-section">
                     <div className="container">
                         <div className="row">
-                            <h2 className="text-center"><span>List of actors</span>Created with <i
-                                className="fa fa-heart"></i> by ESGI Team</h2>
+                            <h2 className="text-center"><span>Les acteurs du monde entier</span></h2>
                         </div>
                         {loading ? (
                             <div className={'row text-center'}>
@@ -43,7 +42,7 @@ class Actors extends Component {
                                                         <p>{actor.notes}</p>
                                                     </div>
                                                     <div className="media-right align-self-center">
-                                                        <a href="#" className="btn btn-default">Contact Now</a>
+                                                        <a href="#" className="btn btn-default">En savoir plus</a>
                                                     </div>
                                                 </div>
                                             </li>
