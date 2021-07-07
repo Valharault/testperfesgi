@@ -3,6 +3,7 @@ import {Route, Switch, Redirect, Link, withRouter} from 'react-router-dom';
 import Actors from './Actors';
 import Posts from './Posts';
 import Films from './Films';
+import Producer from "./Producer";
 
 class Home extends Component {
 
@@ -23,6 +24,9 @@ class Home extends Component {
                             <li className="nav-item">
                                 <Link className={"nav-link"} to={"/films"}> Top 10 films </Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className={"nav-link"} to={"/producer"}> Les producteurs populaires </Link>
+                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -31,6 +35,7 @@ class Home extends Component {
                     <Route path="/actors" component={Actors}/>
                     <Route path="/posts" component={Posts}/>
                     <Route path="/films" component={Films}/>
+                    <Route path="/producer" component={Producer}/>
                 </Switch>
             </div>
         )
