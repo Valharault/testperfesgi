@@ -12,12 +12,16 @@ class CustomController extends AbstractController
     #[Route('/custom', name: 'custom')]
     public function index(FilmRepository $filmRepository): Response
     {
+        // O(1)
         $output = $actors = $producers = [];
+        // O(1)
         $films = ($filmRepository->findBy([],null,100));
+        // O(n)
         foreach ($films as $film) {
-
+            // O(n)
             foreach ($film->getRoles() as $actorRole) {
                 usleep(2000);
+                // O(1)
                 $actors[] = [
                     'actor_name' => $actorRole->getActor()->getFullName(),
                     'character_name' => $actorRole->getCharacterName(),
@@ -26,7 +30,7 @@ class CustomController extends AbstractController
 
                 ];
             }
-
+            // O(n)
             foreach ($film->getProducers() as $producer) {
                 usleep(2000);
                 $producers[] = [
@@ -35,6 +39,7 @@ class CustomController extends AbstractController
                     'website' => $producer->getWebsite()
                 ];
             }
+            // O(1)
             $output[] = [
                 'id' => $film->getId(),
                 'title' => $film->getTitle(),
@@ -46,5 +51,7 @@ class CustomController extends AbstractController
             ];
         }
         return $this->json($output, 200);
+
+        // ====> O(n) * (O(n) + O(n)) => O(n) * O(2n) négligeable = résultat O(n^2)
     }
 }
