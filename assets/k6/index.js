@@ -10,6 +10,6 @@ export const options = {
 };
 
 export default function () {
-    const res = http.get('http://localhost:8000/custom');
+    const res = http.get('http://localhost:8000/api/actors');
     sleep(1);
 }
