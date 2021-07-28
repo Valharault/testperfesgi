@@ -1,0 +1,8 @@
+{
+  "scenarios": {
+    "stress-testing": {
+      "executor": "shared-iterations",
+      "exec": "stressTest"
+    }
+  }
+}
